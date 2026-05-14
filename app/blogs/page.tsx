@@ -4,7 +4,7 @@ import { filterBlogs } from "../actions/blogs";
 
 const Blogs = async ({ searchParams }: { searchParams: Promise<{ filter?: string }> }) => {
     const { filter } = await searchParams;
-    const blogs = descendingBlogsByLikes();
+    const blogs = await descendingBlogsByLikes();
     const filteredBlogs = filter ? blogs.filter(blog => blog.title.toLowerCase().includes(filter.toLowerCase())) : blogs;
     return (
         <div>
